@@ -9,20 +9,22 @@ public class Sketch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int totalCubes = 8;
-        int totalDistance = 5; // width of room from origin
+        int totalCubes = 12;
+        float totalDistance = 2.9f;
 
         for (int i = 0; i < totalCubes; i++)
         {
             float percentage = i / (float)totalCubes;
+            float sin = Mathf.Sin(percentage * Mathf.PI / 2);
 
-            float x = percentage * totalDistance;
+            float x = 1.8f + sin * totalDistance;
             float y = 5.0f;
             float z = 0.0f;
 
             var newCube = (GameObject)Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
-            newCube.GetComponent<CubeScript>().SetSize(1.0f - percentage);
-            newCube.GetComponent<CubeScript>().rotateSpeed = percentage;
+
+            newCube.GetComponent<CubeScript>().SetSize(0.5f * (1.0f - percentage));
+            newCube.GetComponent<CubeScript>().rotateSpeed = 0.2f + percentage * 4.0f;
         }
     }
 
