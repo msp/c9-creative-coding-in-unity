@@ -9,7 +9,7 @@ public class Sketch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int totalCubes = 12;
+        int totalCubes = 30;
         float totalDistance = 2.9f;
 
         for (int i = 0; i < totalCubes; i++)
@@ -23,7 +23,7 @@ public class Sketch : MonoBehaviour
 
             var newCube = (GameObject)Instantiate(myPrefab, new Vector3(x, y, z), Quaternion.identity);
 
-            newCube.GetComponent<CubeScript>().SetSize(0.5f * (1.0f - percentage));
+            newCube.GetComponent<CubeScript>().SetSize(0.45f * (1.0f - percentage));
             newCube.GetComponent<CubeScript>().rotateSpeed = 0.2f + percentage * 4.0f;
         }
     }
